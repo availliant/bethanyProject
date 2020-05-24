@@ -1,0 +1,58 @@
+
+{% extends 'crm/base.html' %}
+{% load staticfiles %}
+{% block content %}
+   
+   <body>
+    <html>
+            {% if user.is_authenticated %}
+                <div class="page-container">
+
+                    <h2 class="top-menu">Hello {{ user.username }},</h2>
+                    <p>Please choose from below options.</p>
+
+                </div>
+            {% endif %}
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="links">
+                            <!-- Example row of columns -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/food.jpg" %}" alt="food"/>
+                                        <div class="caption">
+                                            <h2>Food</h2>
+                                            <p>Here you can add, update, or delete foods.</p>
+                                            <p><a class="btn btn-primary" href="{% url 'crm:food_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                         <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/cal.jpg" %}" alt="customer"/>
+                                <div class="caption">
+                                    <h2>Entry</h2>
+                                    <p>Here you can add, update, or delete entrys </p>
+                                    {% if user.is_authenticated %}
+                                        <p><a class="btn btn-default" href="{% url 'crm:entry_list' %}"
+                                              role="button">View
+                                            details &raquo;</a></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    </html>
+{% endblock %}
